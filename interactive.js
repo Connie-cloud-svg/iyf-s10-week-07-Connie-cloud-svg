@@ -59,6 +59,7 @@
         render();
       });
     });
+    localStorage.setItem('filter', currentFilter);
  
     // ── Render ─────────────────────────────────────────────────────────
     function render() {
@@ -133,3 +134,15 @@ function loadTasks() {
 }
 loadTasks();
 render();
+
+const savedFilter = localStorage.getItem('filter');
+  if (savedFilter) {
+    currentFilter = savedFilter;
+    filterBtns.forEach(btn => {
+      if (btn.dataset.filter === currentFilter) {
+        btn.classList.add('active');
+      } else {
+        btn.classList.remove('active');
+      }
+    });
+  }
