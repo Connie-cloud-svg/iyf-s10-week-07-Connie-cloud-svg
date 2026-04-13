@@ -1,0 +1,238 @@
+body {
+  background-color: blue;
+  font-family: "Times New Roman", Times, serif;
+  display: flex;
+  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+.container {
+  background-color: white;
+  width: 400px;
+  min-height: 400px;
+  height: auto;
+  margin: auto;
+  border-radius: 24px;
+  padding: 2.5rem 2.8rem;
+}
+h1 {
+  font-family: "Playfair Display", serif;
+  font-size: 2.2rem;
+  color: #2c5364;
+  text-align: center;
+  margin-bottom: 0.3rem;
+}
+
+/*stats styles*/
+.stats {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 1.8rem;
+  background: rgba(172, 166, 166, 0.5);
+  border-radius: auto;
+  padding: 0.9rem 1rem;
+}
+.stat {
+  text-align: center;
+}
+
+.stat-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: #0b0c0c;
+  text-transform: uppercase;
+}
+
+.stat-value {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #0dd1c1;
+  line-height: 1.2;
+}
+.input-row {
+  display: flex;
+  gap: 0.7rem;
+  margin-bottom: 1.2rem;
+  border-radius: 14px;
+}
+
+.input-row input {
+  flex: 1;
+  padding: 0.75rem 1.3rem;
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.7);
+  font-family: "DM Sans", sans-serif;
+  font-size: 0.9rem;
+  color: #2c5364;
+  outline: none;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
+}
+
+.input-row input:focus {
+  border-color: #4a90d9;
+  box-shadow: 0 0 0 3px rgba(74, 144, 217, 0.2);
+}
+
+.input-row input::placeholder {
+  color: #9bbccc;
+}
+.btn-add {
+  padding: 0.75rem 1.3rem;
+  background: #4a90d9;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-family: "DM Sans", sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    transform 0.1s;
+  white-space: nowrap;
+}
+
+.btn-add:hover {
+  background: #3578c0;
+}
+.btn-add:active {
+  transform: scale(0.96);
+}
+
+/* Filter tabs */
+.filters {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.2rem;
+}
+
+.filter-btn {
+  flex: 1;
+  padding: 0.55rem;
+  border: 2px solid rgba(74, 144, 217, 0.35);
+  border-radius: 8px;
+  background: transparent;
+  font-family: "DM Sans", sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: #4a7a99;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all 0.2s;
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+  background: #4a90d9;
+  border-color: #4a90d9;
+  color: #fff;
+}
+/* Task list */
+.task-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  min-height: 60px;
+}
+
+.task-item {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  background: rgba(255, 255, 255, 0.65);
+  border-radius: 10px;
+  padding: 0.75rem 1rem;
+  animation: fadeIn 0.3s ease both;
+  transition: opacity 0.3s;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.task-item.completed .task-text {
+  text-decoration: line-through;
+  color: #9bb8c0;
+}
+
+.task-checkbox {
+  width: 20px;
+  height: 20px;
+  accent-color: #4a90d9;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.task-text {
+  flex: 1;
+  font-size: 0.95rem;
+  color: #2c5364;
+  word-break: break-word;
+}
+
+.btn-delete {
+  background: none;
+  border: none;
+  color: #c06060;
+  font-size: 1.2rem;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0 0.2rem;
+  transition:
+    color 0.2s,
+    transform 0.1s;
+  flex-shrink: 0;
+}
+
+.btn-delete:hover {
+  color: #a03030;
+  transform: scale(1.2);
+}
+
+.empty-msg {
+  text-align: center;
+  color: #9bbccc;
+  font-size: 0.9rem;
+  padding: 1rem 0;
+}
+
+/* Clear completed */
+.bottom-bar {
+  margin-top: 1.2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btn-clear {
+  background: #a0a0a0;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 0.75rem 2.5rem;
+  width: 100%;
+  font-size: 0.82rem;
+  cursor: pointer;
+  font-family: "DM Sans", sans-serif;
+  text-decoration: strike-through;
+  transition:
+    color 0.2s,
+    background 0.2s;
+}
+
+.btn-clear:hover {
+  background: #808080;
+  color: #fff;
+}
