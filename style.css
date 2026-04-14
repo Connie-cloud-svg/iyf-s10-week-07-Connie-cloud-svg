@@ -1,0 +1,297 @@
+/* ===========================
+   MIND DUMP — style.css
+   Emerald Dev Palette
+   =========================== */
+
+/* --- Variables --- */
+:root {
+  --emerald: #00c896;
+  --sky: #0ea5e9;
+  --dark: #0f1923;
+  --dark-surface: #162230;
+  --dark-card: #1c2e3e;
+  --dark-border: #243447;
+  --text-primary: #e8f0f7;
+  --text-muted: #7a93a8;
+  --font-main: 'Segoe UI', sans-serif;
+  --radius: 10px;
+  --transition: 0.2s ease;
+}
+
+/* --- Reset & Base --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--dark);
+  color: var(--text-primary);
+  font-family: var(--font-main);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* --- Header --- */
+header {
+  background-color: var(--dark-surface);
+  border-bottom: 1px solid var(--dark-border);
+  padding: 1.5rem 2rem;
+  text-align: center;
+}
+
+header h1 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--emerald);
+  letter-spacing: -0.5px;
+}
+
+header p {
+  margin-top: 0.4rem;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+}
+
+/* --- Main Container --- */
+.container {
+  max-width: 800px;
+  width: 100%;
+  margin: 2rem auto;
+  padding: 0 1.5rem;
+  flex: 1;
+}
+
+/* --- Note Input Section --- */
+.note-input {
+  background-color: var(--dark-card);
+  border: 1px solid var(--dark-border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.note-input input[type="text"] {
+  background-color: var(--dark-surface);
+  border: 1px solid var(--dark-border);
+  border-radius: var(--radius);
+  color: var(--text-primary);
+  font-size: 1rem;
+  padding: 0.75rem 1rem;
+  outline: none;
+  transition: border-color var(--transition);
+}
+
+.note-input input[type="text"]:focus {
+  border-color: var(--emerald);
+}
+
+.note-input input::placeholder {
+  color: var(--text-muted);
+}
+
+.note-input textarea {
+  background-color: var(--dark-surface);
+  border: 1px solid var(--dark-border);
+  border-radius: var(--radius);
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  font-family: var(--font-main);
+  padding: 0.75rem 1rem;
+  resize: vertical;
+  outline: none;
+  transition: border-color var(--transition);
+  line-height: 1.6;
+}
+
+.note-input textarea:focus {
+  border-color: var(--emerald);
+}
+
+.note-input textarea::placeholder {
+  color: var(--text-muted);
+}
+
+/* --- Add Note Button --- */
+#add-note {
+  background-color: var(--emerald);
+  color: var(--dark);
+  border: none;
+  border-radius: var(--radius);
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  cursor: pointer;
+  align-self: flex-end;
+  transition: background-color var(--transition), transform var(--transition);
+}
+
+#add-note:hover {
+  background-color: #00b085;
+  transform: translateY(-1px);
+}
+
+#add-note:active {
+  transform: translateY(0);
+}
+
+/* --- Notes Display Section --- */
+.note-display {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+/* --- Individual Note Card --- */
+.note-card {
+  background-color: var(--dark-card);
+  border: 1px solid var(--dark-border);
+  border-top: 3px solid var(--emerald);
+  border-radius: var(--radius);
+  padding: 1rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  transition: transform var(--transition), border-color var(--transition);
+}
+
+.note-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--sky);
+  border-top-color: var(--emerald);
+}
+
+.note-card h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--emerald);
+}
+
+.note-card p {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.note-card .delete-btn {
+  align-self: flex-end;
+  background: transparent;
+  border: 1px solid var(--dark-border);
+  color: var(--text-muted);
+  border-radius: 6px;
+  font-size: 0.8rem;
+  padding: 0.3rem 0.7rem;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  transition: background-color var(--transition), color var(--transition);
+}
+
+.note-card .delete-btn:hover {
+  background-color: #ff4d4d22;
+  color: #ff6b6b;
+  border-color: #ff6b6b;
+}
+
+/* --- Empty State Message --- */
+.empty-state {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  padding: 2rem;
+  grid-column: 1 / -1;
+}
+
+/* --- Footer --- */
+footer {
+  background-color: var(--dark-surface);
+  border-top: 1px solid var(--dark-border);
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+footer span {
+  color: var(--emerald);
+}
+
+/* --- Responsive --- */
+@media (max-width: 600px) {
+  header h1 {
+    font-size: 1.6rem;
+  }
+
+  .note-display {
+    grid-template-columns: 1fr;
+  }
+
+  #add-note {
+    width: 100%;
+  }
+}
+
+/* --- Modal Overlay --- */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 100;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-overlay.active {
+  display: flex;
+}
+
+.modal-card {
+  background-color: var(--dark-card);
+  border: 1px solid var(--dark-border);
+  border-top: 3px solid var(--emerald);
+  border-radius: var(--radius);
+  padding: 2rem;
+  max-width: 500px;
+  width: 90%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.modal-card h2 {
+  font-size: 1.3rem;
+  color: var(--emerald);
+}
+
+.modal-card p {
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  line-height: 1.7;
+  white-space: pre-wrap; /* respects line breaks */
+}
+
+.modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: transparent;
+  border: 1px solid var(--dark-border);
+  color: var(--text-muted);
+  border-radius: 6px;
+  padding: 0.2rem 0.6rem;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: color var(--transition), border-color var(--transition);
+}
+
+.modal-close:hover {
+  color: #ff6b6b;
+  border-color: #ff6b6b;
+}

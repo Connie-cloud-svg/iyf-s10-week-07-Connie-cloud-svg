@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mind Dump</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Mind Dump 🧠</h1>
+      <p>Unload🌊. Organize📝. Think😊.</p>
+    </header>
+
+    <main class="container">
+      <!-- Note Input Section -->
+      <section class="note-input" id="note-input">
+        <input
+          type="text"
+          id="note-title"
+          placeholder="Note title here😁..."
+          autofocus
+        />
+        <textarea
+          id="note-content"
+          placeholder="What's on your mind...."
+          rows="10"
+        ></textarea>
+        <button id="add-note" onclick="addNote()">+ Add Note</button>
+      </section>
+
+      <!-- Notes Display Section -->
+      <section class="note-display" id="note-container">
+        <!-- Notes will be dynamically added here -->
+      </section>
+
+      <!-- Note View Modal -->
+<div class="modal-overlay" id="modal-overlay" onclick="closeNote()">
+  <div class="modal-card" onclick="event.stopPropagation()">
+    <button class="modal-close" onclick="closeNote()">✕</button>
+    <h2 id="modal-title"></h2>
+    <p id="modal-body"></p>
+  </div>
+</div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <p>&copy; Built by Connie. 2026 Mind Dump. All rights reserved.</p>
+    </footer>
+    <script src="./notes.js"></script>
+  </body>
+</html>
