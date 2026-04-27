@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel ="stylesheet" href="./design.css">
+        <title>Cart</title>
+    </head>
+
+    <body>
+        <main class="main-content">
+            <section class="cart-items">
+                <div id="cart-item">
+                    <!-- Added cart items will appear here -->
+                     <ul id="cart-list">
+                        <li class="cart-item">
+                            <span class="item-name"></span>
+                            <span class="item-price"></span>
+                            <button class="remove-item" onclick="RemoveItemFromCart()">Remove</button>
+                        </li>
+                     </ul>
+                </div>
+            </section>
+        </main>
+        <script src="./shoppingcart.js"></script>
+    </body>
+</html>
