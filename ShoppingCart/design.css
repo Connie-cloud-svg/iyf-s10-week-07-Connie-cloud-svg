@@ -7,8 +7,10 @@
     --ink-2:     #5c4e38;
     --accent:    #c84b11;
     --accent-2:  #f07d3e;
+    --btn-bg:    #1a1208;
     --green:     #2d6a4f;
     --cream:     #f5efe6;
+    --hero-bg:   #1a1208;
     --shadow:    0 2px 12px rgba(26,18,8,.08);
     --shadow-lg: 0 8px 32px rgba(26,18,8,.14);
     --radius:    14px;
@@ -17,6 +19,59 @@
     --nav-h: 68px;
 }
 
+body.darkmode {
+        --bg:        #1a1410;
+        --surface:   #242018;
+        --cream:     #2e2820;
+        --border:    #3d3428;
+        --btn-bg:    #3d2f1f;
+        --ink:       #f5ede0;
+        --ink-2:     #a89278;
+        --accent:    #e05a1a;
+        --accent-2:  #f08a50;
+        --green:     #3a8a64;
+}
+
+#theme-switch {
+    margin-left: auto;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    background: var(--cream);
+    border: 1px solid var(--border);
+    display: grid;
+    place-items: center;
+    font-size: 1rem;
+    color: var(--ink);
+    transition: background 0.2s;
+}
+#theme-switch:hover { background: var(--border); }
+
+#theme-switch svg {
+    width: 24px;
+    height: 24px;
+    fill: var(--ink);
+     transition: opacity 0.3s ease;
+}
+
+#theme-switch svg :last-child {
+    display: none;
+}
+
+.darkmode #theme-switch svg :first-child {
+    display: none;
+}
+
+.darkmode #theme-switch svg :last-child {
+    display: block;
+}
+
+#theme-switch .fa-sun  { display: none; }
+#theme-switch .fa-moon { display: block; }
+
+body.darkmode #theme-switch .fa-sun  { display: block; }
+body.darkmode #theme-switch .fa-moon { display: none; }
+
 /* ─── RESET ──────────────────────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
@@ -24,8 +79,9 @@ body {
     font-family: var(--font-body);
     background: var(--bg);
     color: var(--ink);
-    min-height: 100vh;
-}
+    min-height: 100vh
+}s
+
 a { text-decoration: none; color: inherit; }
 ul { list-style: none; }
 img { display: block; max-width: 100%; }
@@ -98,7 +154,7 @@ button { cursor: pointer; font-family: var(--font-body); border: none; }
 /* ─── HERO ────────────────────────────────────────────────────────────────── */
 .hero {
     position: relative;
-    background: var(--ink);
+    background: var(--hero-bg);
     color: #fff;
     padding: 5rem 2rem 4rem;
     overflow: hidden;
@@ -238,7 +294,7 @@ button { cursor: pointer; font-family: var(--font-body); border: none; }
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    background: var(--ink);
+    background: var(--btn-bg);
     color: #fff;
     padding: 0.7rem;
     border-radius: 10px;
