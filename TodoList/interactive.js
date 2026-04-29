@@ -89,27 +89,27 @@
         taskList.appendChild(msg);
         return;
       }
- 
+ // Render tasks
       visible.forEach(task => {
         const item = document.createElement('div');
         item.className = 'task-item' + (task.completed ? ' completed' : '');
- 
+ // Checkbox
         const cb = document.createElement('input');
         cb.type = 'checkbox';
         cb.className = 'task-checkbox';
         cb.checked = task.completed;
         cb.addEventListener('change', () => toggleTask(task.id));
- 
+ // Text
         const span = document.createElement('span');
         span.className = 'task-text';
         span.textContent = task.text;
- 
+ // Delete button
         const del = document.createElement('button');
         del.className = 'btn-delete';
         del.innerHTML = '&times;';
         del.title = 'Delete task';
         del.addEventListener('click', () => deleteTask(task.id));
- 
+ // Assemble
         item.appendChild(cb);
         item.appendChild(span);
         item.appendChild(del);
@@ -117,7 +117,7 @@
       });
     }
  
-    // Initial rend
+    // Initial render
     render();
 
     // ── LocalStorage ───────────────────────────────────────────────────
