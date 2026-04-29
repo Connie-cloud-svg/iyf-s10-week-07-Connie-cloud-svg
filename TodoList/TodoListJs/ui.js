@@ -22,10 +22,8 @@ export function filterTasks() {
     return visible;
 }
 
-function clearList() {
+function clearList(visible) {
     taskList.innerHTML = "";
-
-    const visible = filterTasks();
     if (visible.length === 0) {
         const msg = document.createElement("p");
         msg.className = "empty-msg";
@@ -40,8 +38,7 @@ function clearList() {
 export function render( toggleTask, deleteTask) {
     const visible = filterTasks();
     stats();
-
-    clearList();
+    clearList(visible);
     visible.forEach(task => {
         const item = document.createElement("div");
         item.className = "task-item" + (task.completed ? " completed" : "" );
@@ -69,5 +66,5 @@ export function render( toggleTask, deleteTask) {
 
     })
 }
-render();
+
 
