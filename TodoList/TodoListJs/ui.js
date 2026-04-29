@@ -13,8 +13,6 @@ function stats() {
     statTotal.textContent = total;
     statActive.textContent = active;
     statCompleted.textContent = completed;
-
-    return stats;
 }
 
 export function filterTasks() {
