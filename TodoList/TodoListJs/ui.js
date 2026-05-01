@@ -22,23 +22,29 @@ export function filterTasks() {
     return visible;
 }
 
-function clearList(visible) {
+function clearList() {
     taskList.innerHTML = "";
-    if (visible.length === 0) {
-        const msg = document.createElement("p");
-        msg.className = "empty-msg";
-        msg.textContent = appState.tasks.length === 0
+}
+
+function showEmptyMessage() {
+    const msg = document.createElement("p");
+    msg.className = "empty-msg";
+    msg.textContent = appState.tasks.length === 0
         ? 'No tasks yet. Add one above!'
         : 'No tasks in this category.';
-        taskList.appendChild(msg);
-        return;
-    }
-} 
+    taskList.appendChild(msg);
+}
 
-export function render( toggleTask, deleteTask) {
+export function render(toggleTask, deleteTask) {
     const visible = filterTasks();
     stats();
-    clearList(visible);
+    clearList();
+
+    if (visible.length === 0) {
+        showEmptyMessage();
+        return;  
+    }
+
     visible.forEach(task => {
         const item = document.createElement("div");
         item.className = "task-item" + (task.completed ? " completed" : "" );
@@ -65,6 +71,9 @@ export function render( toggleTask, deleteTask) {
         taskList.appendChild(item);
 
     })
+    
 }
+
+
 
 

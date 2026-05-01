@@ -4,8 +4,7 @@ import { getNextId } from './utils.js';
 import { saveTasks, loadTasks } from './storage.js';
 
 const input = document.getElementById('task-input');
-const addBtn = document.getElementById('add-btn');
-const clearBtn = document.getElementById('clear-btn');
+const addBtn = document.getElementById('add-btn');;
 const filterBtns = document.querySelectorAll('.filter-btn');
 
 function addTask() {
@@ -34,11 +33,6 @@ function deleteTask(id) {
     render(toggleTask, deleteTask);
 }
 
-clearBtn.addEventListener('click', () => {
-    appState.tasks = appState.tasks.filter(t => !t.completed);
-    saveTasks();
-    render(toggleTask, deleteTask);
-})
 
 filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
