@@ -3,8 +3,8 @@ import { render } from './ui.js';
 import { getNextId } from './utils.js';
 import { saveTasks, loadTasks } from './storage.js';
 
-const input = document.getElementById('task-input');
-const addBtn = document.getElementById('add-btn');;
+const input = /** @type {HTMLInputElement} */ (document.getElementById('task-input'));
+const addBtn = /** @type {HTMLElement} */ (document.getElementById('add-btn'));
 const filterBtns = document.querySelectorAll('.filter-btn');
 
 function addTask() {
@@ -20,14 +20,14 @@ function addTask() {
 addBtn.addEventListener('click', addTask);
 input.addEventListener('keydown', e => { if (e.key === 'Enter') addTask(); });
 
-function toggleTask(id) {
+function toggleTask(/** @type {number} */ id) {
     const task = appState.tasks.find(t => t.id === id);
     if (task) task.completed = !task.completed;
     saveTasks();
     render(toggleTask, deleteTask);
 }
 
-function deleteTask(id) {
+function deleteTask(/** @type {number} */ id) {
     appState.tasks = appState.tasks.filter(t => t.id !== id);
     saveTasks();
     render(toggleTask, deleteTask);
@@ -38,17 +38,17 @@ filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
         filterBtns.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
-        appState.currentFilter = btn.dataset.filter;
+        appState.currentFilter = /** @type {HTMLElement} */ (btn).dataset.filter ?? 'all';
         localStorage.setItem('filter', appState.currentFilter);
         render(toggleTask, deleteTask);
-    })
-})
+    });
+});
 
 const savedFilter = localStorage.getItem('filter');
 if (savedFilter) {
     appState.currentFilter = savedFilter;
     filterBtns.forEach(btn => {
-        btn.classList.toggle('active', btn.dataset.filter === savedFilter);
+        btn.classList.toggle('active', /** @type {HTMLElement} */ (btn).dataset.filter === savedFilter);
     });
 }
 

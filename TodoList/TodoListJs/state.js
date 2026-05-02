@@ -1,6 +1,5 @@
 export const appState = {
-    tasks: [],
-    currentFilter: 'all',
-    nextId: 1
+    tasks: /** @type {{ id: number, text: string, completed: boolean }[]} */ ([]),
+    currentFilter: 'all'
 };
 

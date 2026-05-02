@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Connie-cloud-svg/iyf-s10-week-07-Connie-cloud-svg.git"
@@ -22,15 +21,10 @@
     "globals": "^17.6.0",
     "prettier": "^3.8.3"
   },
-
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "lint": "eslint src/",
-        "lint:fix": "eslint src/ --fix",
-        "format": "prettier --write src/"
-    }
-
-
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint src/",
+    "lint:fix": "eslint src/ --fix",
+    "format": "prettier --write src/"
+  }
 }
-
-
