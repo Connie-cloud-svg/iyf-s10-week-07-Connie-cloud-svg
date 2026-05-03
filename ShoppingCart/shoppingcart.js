@@ -212,22 +212,19 @@ function showToast(message) {
     toastTimer = setTimeout(() => toast.classList.remove("show"), 2500);
 }
 
-let darkmode = localStorage.getItem('darkmode');
-const themeSwitch = document.getElementById('theme-switch');
+// ─── DARK MODE ────────────────────────────────────────────────────────────────
 
-const enableDarkMode = () => {
-    document.body.classList.add('darkmode');
-    localStorage.setItem('darkmode', 'active');
+function initDarkMode() {
+    const themeSwitch = document.getElementById('theme-switch');
+    if (!themeSwitch) return; // guard: not on every page
+
+    let darkmode = localStorage.getItem('darkmode');
+    if (darkmode === 'active') enableDarkMode();
+
+    themeSwitch.addEventListener('click', () => {
+        darkmode = localStorage.getItem('darkmode');
+        darkmode !== 'active' ? enableDarkMode() : disableDarkMode();
+    });
 }
 
-const disableDarkMode = () => {
-    document.body.classList.remove('darkmode');
-    localStorage.setItem('darkmode', null);
-}
-
-if (darkmode === 'active') (enableDarkMode());
-
-themeSwitch.addEventListener('click', () => {
-    darkmode = localStorage.getItem('darkmode');
-    darkmode !== 'active' ? enableDarkMode() : disableDarkMode();
-})
+initDarkMode();
