@@ -9,7 +9,8 @@ const state = {
         { id: 5, name: "Backpack", price: 4200, image: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&q=80", category: "Bags" },
         { id: 6, name: "Coffee Maker", price: 8800, image: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=400&q=80", category: "Kitchen" },
     ],
-    cart: [] // [{ productId, quantity }]
+    /** @type {{ productId: number; quantity: number }[]} */
+    cart: []
 };
 
 // ─── PERSISTENCE ─────────────────────────────────────────────────────────────
@@ -28,7 +29,8 @@ loadCart();
 
 // ─── CART OPERATIONS ─────────────────────────────────────────────────────────
 
-function addToCart(productId) {
+// eslint-disable-next-line no-unused-vars
+function addToCart(/** @type {number} */ productId) {
     const existing = state.cart.find(item => item.productId === productId);
 
     if (existing) {
@@ -41,11 +43,14 @@ function addToCart(productId) {
     updateCartCount();
 
     const product = state.products.find(p => p.id === productId);
-    showToast(`"${product.name}" added to cart!`);
+    if (product) {
+        showToast(`"${product.name}" added to cart!`);
+    }
 }
 
-function updateQuantity(productId, newQuantity) {
-    const qty = parseInt(newQuantity);
+// eslint-disable-next-line no-unused-vars
+function updateQuantity(/** @type {number} */ productId, /** @type {string | number} */ newQuantity) {
+    const qty = parseInt(String(newQuantity));
 
     if (qty <= 0) {
         removeFromCart(productId);
@@ -61,7 +66,7 @@ function updateQuantity(productId, newQuantity) {
     }
 }
 
-function removeFromCart(productId) {
+function removeFromCart(/** @type {number} */ productId) {
     const product = state.products.find(p => p.id === productId);
     state.cart = state.cart.filter(item => item.productId !== productId);
     saveCart();
@@ -69,7 +74,7 @@ function removeFromCart(productId) {
     updateCartCount();
     if (product) showToast(`"${product.name}" removed.`);
 }
-
+// eslint-disable-next-line no-unused-vars
 function clearCart() {
     if (state.cart.length === 0) return;
     state.cart = [];
@@ -92,12 +97,12 @@ function getCartCount() {
     return state.cart.reduce((count, item) => count + item.quantity, 0);
 }
 
-function formatPrice(amount) {
+function formatPrice(/** @type {number} */ amount) {
     return "KSh " + amount.toLocaleString("en-KE");
 }
 
 // ─── RENDER: PRODUCTS (index.html) ───────────────────────────────────────────
-
+// eslint-disable-next-line no-unused-vars
 function renderProducts() {
     const grid = document.getElementById("product-grid");
     const countEl = document.getElementById("product-count");
@@ -177,16 +182,16 @@ function renderCart() {
         `;
     }).join("");
 
-    // Update order summary
-    const total = getCartTotal();
-    const count = getCartCount();
-    const summaryCount = document.getElementById("summary-count");
-    const summarySubtotal = document.getElementById("summary-subtotal");
-    const summaryTotal = document.getElementById("summary-total");
+// Update order summary
+const total = getCartTotal();
+const count = getCartCount();
+const summaryCount = document.getElementById("summary-count");
+const summarySubtotal = document.getElementById("summary-subtotal");
+const summaryTotal = document.getElementById("summary-total");
 
-    if (summaryCount) summaryCount.textContent = count;
-    if (summarySubtotal) summarySubtotal.textContent = formatPrice(total);
-    if (summaryTotal) summaryTotal.textContent = formatPrice(total);
+if (summaryCount) summaryCount.textContent = String(count);
+if (summarySubtotal) summarySubtotal.textContent = formatPrice(total);
+if (summaryTotal) summaryTotal.textContent = formatPrice(total);
 }
 
 // ─── CART COUNT BADGE ─────────────────────────────────────────────────────────
@@ -195,15 +200,17 @@ function updateCartCount() {
     const badges = document.querySelectorAll("#cart-count");
     const count = getCartCount();
     badges.forEach(badge => {
-        badge.textContent = count;
+        badge.textContent = String(count);
         badge.classList.toggle("has-items", count > 0);
     });
 }
 
 // ─── TOAST NOTIFICATION ───────────────────────────────────────────────────────
 
+/** @type {number | undefined} */
 let toastTimer;
-function showToast(message) {
+
+function showToast(/** @type {string} */ message) {
     const toast = document.getElementById("toast");
     if (!toast) return;
     toast.textContent = message;
@@ -228,3 +235,15 @@ function initDarkMode() {
 }
 
 initDarkMode();
+
+function enableDarkMode() {
+    document.body.classList.add('dark-mode');
+    localStorage.setItem('darkmode', 'active');
+}
+
+function disableDarkMode() {
+    document.body.classList.remove('dark-mode');
+    localStorage.setItem('darkmode', 'inactive');
+}
+
+
